@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_vehicle_reservation_form" model="ir.ui.view">
+        <field name="name">vehicle.reservation.form</field>
+        <field name="model">vehicle.reservation</field>
+        <field name="arch" type="xml">
+            <form string="Reservation">
+                <header>
+                    <button name="action_confirm" string="Confirm" type="object" invisible="state != 'draft'" class="oe_highlight"/>
+                    <button name="action_cancel" string="Cancel" type="object" invisible="state not in ('draft', 'active')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,active,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="vehicle_id"/>
+                        </group>
+                        <group>
+                            <field name="date_reservation"/>
+                            <field name="date_expiry"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_vehicle_reservation_tree" model="ir.ui.view">
+        <field name="name">vehicle.reservation.tree</field>
+        <field name="model">vehicle.reservation</field>
+        <field name="arch" type="xml">
+            <tree string="Reservations" decoration-info="state=='active'" decoration-muted="state=='expired'">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="vehicle_id"/>
+                <field name="date_expiry"/>
+                <field name="state" widget="badge"/>
+                <header>
+                    <button name="%(action_vehicle_reservation_report_wizard)d" string="Export to Excel" type="action" class="o_button_generate_leads" display="always"/>
+                </header>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_vehicle_reservation" model="ir.actions.act_window">
+        <field name="name">Reservations</field>
+        <field name="res_model">vehicle.reservation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_vehicle_reservation_tree"/>
+    </record>
+
+</odoo>

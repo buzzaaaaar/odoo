@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_vehicle_list" model="ir.actions.report">
+        <field name="name">Vehicle List</field>
+        <field name="model">vehicle.vehicle</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">my_custom_addon.report_vehicle_list</field>
+        <field name="report_file">my_custom_addon.report_vehicle_list</field>
+        <field name="print_report_name">'Vehicle List - %s' % (object.name if len(object) == 1 else 'Multiple')</field>
+        <field name="binding_model_id" ref="model_vehicle_vehicle"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_vehicle_list">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2>Vehicle List</h2>
+                    <table class="table table-sm o_main_table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Make</th>
+                                <th>Model</th>
+                                <th>Year</th>
+                                <th>Status</th>
+                                <th>Selling Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="docs" t-as="vehicle">
+                                <td><span t-field="vehicle.name"/></td>
+                                <td><span t-field="vehicle.make"/></td>
+                                <td><span t-field="vehicle.model"/></td>
+                                <td><span t-field="vehicle.year"/></td>
+                                <td><span t-field="vehicle.status"/></td>
+                                <td><span t-field="vehicle.selling_price"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

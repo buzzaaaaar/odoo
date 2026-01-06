@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_vehicle_reservation_report_wizard_form" model="ir.ui.view">
+        <field name="name">vehicle.reservation.report.wizard.form</field>
+        <field name="model">vehicle.reservation.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Reservation Export">
+                <field name="file_data" invisible="1"/>
+                <field name="file_name" invisible="1"/>
+
+                <sheet>
+                    <group invisible="file_data != False">
+                        <group>
+                            <field name="partner_id"/>
+                        </group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                    </group>
+
+                    <div invisible="file_data == False">
+                        <h2>Export Complete</h2>
+                        <p>Your file is ready for download:</p>
+                        <field name="file_name" readonly="1" invisible="1"/>
+                        <field name="file_data" readonly="1" filename="file_name"/>
+                    </div>
+                </sheet>
+                <footer>
+                    <button name="action_export_excel" string="Generate Report" type="object" class="oe_highlight" invisible="file_data != False"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_vehicle_reservation_report_wizard" model="ir.actions.act_window">
+        <field name="name">Export Reservations</field>
+        <field name="res_model">vehicle.reservation.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_vehicle_reservation"/>
+        <field name="binding_view_types">list</field>
+    </record>
+
+</odoo>

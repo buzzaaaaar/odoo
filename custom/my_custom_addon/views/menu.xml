@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_vehicle_dealership_root" name="Vehicle Dealership" sequence="10" web_icon="my_custom_addon,static/description/icon.png"/>
+
+    <menuitem id="menu_vehicle_vehicle" name="Vehicles" parent="menu_vehicle_dealership_root" action="action_vehicle_vehicle" sequence="10"/>
+
+    <menuitem id="menu_vehicle_customer" name="Customers" parent="menu_vehicle_dealership_root" action="base.action_partner_form" sequence="20"/>
+
+    <menuitem id="menu_vehicle_reservation" name="Reservations" parent="menu_vehicle_dealership_root" action="action_vehicle_reservation" sequence="30"/>
+    
+    <menuitem id="menu_vehicle_sales" name="Sales" parent="menu_vehicle_dealership_root" action="sale.action_orders" sequence="40"/>
+    
+    <menuitem id="menu_vehicle_reports" name="Reports" parent="menu_vehicle_dealership_root" sequence="50"/>
+    <menuitem id="menu_vehicle_report_list" name="Available Vehicles" parent="menu_vehicle_reports" action="action_report_vehicle_list" sequence="10"/>
+</odoo>

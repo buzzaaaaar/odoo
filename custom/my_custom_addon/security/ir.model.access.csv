@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vehicle_vehicle_manager,vehicle.vehicle.manager,model_vehicle_vehicle,group_vehicle_manager,1,1,1,1
+access_vehicle_reservation_report_wizard,vehicle.reservation.report.wizard,model_vehicle_reservation_report_wizard,base.group_user,1,1,1,1
+access_vehicle_vehicle_sales_executive,vehicle.vehicle.sales_executive,model_vehicle_vehicle,group_vehicle_sales_executive,1,1,1,0
+access_vehicle_vehicle_viewer,vehicle.vehicle.viewer,model_vehicle_vehicle,group_vehicle_viewer,1,0,0,0
+access_vehicle_reservation_manager,vehicle.reservation.manager,model_vehicle_reservation,group_vehicle_manager,1,1,1,1
+access_vehicle_reservation_sales_executive,vehicle.reservation.sales_executive,model_vehicle_reservation,group_vehicle_sales_executive,1,1,1,0
+access_vehicle_reservation_viewer,vehicle.reservation.viewer,model_vehicle_reservation,group_vehicle_viewer,1,0,0,0

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_vehicle_vehicle_form" model="ir.ui.view">
+        <field name="name">vehicle.vehicle.form</field>
+        <field name="model">vehicle.vehicle</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle">
+                <header>
+                    <field name="status" widget="statusbar" statusbar_visible="available,reserved,sold"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="make"/>
+                            <field name="model"/>
+                            <field name="variant"/>
+                            <field name="year"/>
+                            <field name="vehicle_type"/>
+                            <field name="color"/>
+                        </group>
+                        <group>
+                            <field name="transmission"/>
+                            <field name="fuel_type"/>
+                            <field name="engine_capacity"/>
+                            <field name="mileage"/>
+                            <field name="vin"/>
+                            <field name="condition"/>
+                        </group>
+                    </group>
+                    <group string="Pricing">
+                        <field name="currency_id" invisible="1"/>
+                        <field name="purchase_price"/>
+                        <field name="selling_price"/>
+                    </group>
+                    <notebook>
+                        <page string="Images">
+                            <field name="image_ids" widget="many2many_binary"/>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_vehicle_vehicle_tree" model="ir.ui.view">
+        <field name="name">vehicle.vehicle.tree</field>
+        <field name="model">vehicle.vehicle</field>
+        <field name="arch" type="xml">
+            <tree string="Vehicles" decoration-success="status=='available'" decoration-warning="status=='reserved'"
+                  decoration-muted="status=='sold'">
+                <header>
+                    <button name="action_print_report" string="Generate PDF" type="object" class="btn-primary"
+                            display="always"/>
+                </header>
+                <field name="name"/>
+                <field name="make"/>
+                <field name="model"/>
+                <field name="year"/>
+                <field name="vehicle_type"/>
+                <field name="fuel_type"/>
+                <field name="selling_price"/>
+                <field name="status" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_vehicle_vehicle_search" model="ir.ui.view">
+        <field name="name">vehicle.vehicle.search</field>
+        <field name="model">vehicle.vehicle</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="make"/>
+                <field name="model"/>
+                <field name="vin"/>
+                <filter string="Available" name="available" domain="[('status', '=', 'available')]"/>
+                <filter string="Reserved" name="reserved" domain="[('status', '=', 'reserved')]"/>
+                <filter string="Sold" name="sold" domain="[('status', '=', 'sold')]"/>
+                <separator/>
+                <filter string="New" name="new" domain="[('condition', '=', 'new')]"/>
+                <filter string="Used" name="used" domain="[('condition', '=', 'used')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Make" name="group_make" context="{'group_by': 'make'}"/>
+                    <filter string="Model" name="group_model" context="{'group_by': 'model'}"/>
+                    <filter string="Status" name="group_status" context="{'group_by': 'status'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_vehicle_vehicle_kanban" model="ir.ui.view">
+        <field name="name">vehicle.vehicle.kanban</field>
+        <field name="model">vehicle.vehicle</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="status">
+                <tree>
+                    <header>
+                        <button name="action_print_report" string="Generate PDF" type="object" class="btn-primary"
+                                display="always"/>
+                    </header>
+                </tree>
+                <field name="id"/>
+                <field name="make"/>
+                <field name="model"/>
+                <field name="year"/>
+                <field name="selling_price"/>
+                <field name="status"/>
+
+                <templates>
+                    <div class="oe_kanban_bottom_right">
+                        <button type="object" name="action_print_report" class="btn btn-primary btn-sm" string="PDF"/>
+                    </div>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+
+                                <strong class="o_kanban_record_title">
+                                    <field name="make"/>
+                                    <field name="model"/>
+                                </strong>
+
+                                <div>
+                                    <field name="year"/>
+                                </div>
+
+                                <div>
+                                    <field name="selling_price" widget="monetary"/>
+                                </div>
+
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_left">
+                                        <field name="status" widget="label_selection" options="{'classes': {
+                                               'available': 'success',
+                                               'reserved': 'warning',
+                                               'sold': 'default'
+                                           }}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <record id="action_vehicle_vehicle" model="ir.actions.act_window">
+        <field name="name">Vehicles</field>
+        <field name="res_model">vehicle.vehicle</field>
+        <field name="view_mode">tree,kanban,form,search</field>
+        <field name="view_id" ref="view_vehicle_vehicle_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first vehicle!
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Partners -->
+        <record id="partner_demo_john" model="res.partner">
+            <field name="name">John Dealer</field>
+            <field name="email">john.dealer@example.com</field>
+            <field name="is_dealer_customer">True</field>
+        </record>
+        <record id="partner_demo_jane" model="res.partner">
+            <field name="name">Jane Buyer</field>
+            <field name="email">jane.buyer@example.com</field>
+            <field name="is_dealer_customer">True</field>
+        </record>
+        <record id="partner_demo_corp" model="res.partner">
+            <field name="name">Corporate Fleet Inc.</field>
+            <field name="is_company">True</field>
+            <field name="is_dealer_customer">True</field>
+        </record>
+
+        <!-- Vehicles (15 Total) -->
+        <!-- Available -->
+        <record id="veh_1" model="vehicle.vehicle">
+            <field name="make">Toyota</field>
+            <field name="model">Camry</field>
+            <field name="year">2023</field>
+            <field name="vehicle_type">sedan</field>
+            <field name="transmission">automatic</field>
+            <field name="fuel_type">petrol</field>
+            <field name="vin">TOY-CAM-001</field>
+            <field name="selling_price">28000</field>
+            <field name="status">available</field>
+        </record>
+        <record id="veh_2" model="vehicle.vehicle">
+            <field name="make">Honda</field>
+            <field name="model">Civic</field>
+            <field name="year">2024</field>
+            <field name="vehicle_type">sedan</field>
+            <field name="transmission">automatic</field>
+            <field name="fuel_type">petrol</field>
+            <field name="vin">HON-CIV-002</field>
+            <field name="selling_price">24000</field>
+            <field name="status">available</field>
+        </record>
+        <record id="veh_3" model="vehicle.vehicle">
+            <field name="make">Ford</field>
+            <field name="model">Mustang</field>
+            <field name="year">2023</field>
+            <field name="vehicle_type">sedan</field>
+            <field name="transmission">manual</field>
+            <field name="fuel_type">petrol</field>
+            <field name="vin">FOR-MUS-003</field>
+            <field name="selling_price">45000</field>
+            <field name="status">available</field>
+        </record>
+        <record id="veh_4" model="vehicle.vehicle">
+            <field name="make">Chevrolet</field>
+            <field name="model">Tahoe</field>
+            <field name="year">2022</field>
+            <field name="vehicle_type">suv</field>
+            <field name="transmission">automatic</field>
+            <field name="fuel_type">petrol</field>
+            <field name="vin">CHE-TAH-004</field>
+            <field name="selling_price">55000</field>
+            <field name="status">available</field>
+        </record>
+        
+        <!-- Reserved (Needs matching active reservation) -->
+        <record id="veh_5" model="vehicle.vehicle">
+            <field name="make">Tesla</field>
+            <field name="model">Model Y</field>
+            <field name="year">2024</field>
+            <field name="vehicle_type">electric</field>
+            <field name="transmission">automatic</field>
+            <field name="fuel_type">electric</field>
+            <field name="vin">TES-MOD-005</field>
+            <field name="selling_price">48000</field>
+            <field name="status">reserved</field>
+        </record>
+        <record id="veh_6" model="vehicle.vehicle">
+            <field name="make">BMW</field>
+            <field name="model">X5</field>
+            <field name="year">2023</field>
+            <field name="vehicle_type">suv</field>
+            <field name="transmission">automatic</field>
+            <field name="fuel_type">diesel</field>
+            <field name="vin">BMW-XX5-006</field>
+            <field name="selling_price">65000</field>
+            <field name="status">reserved</field>
+        </record>
+        <record id="veh_7" model="vehicle.vehicle">
+            <field name="make">Mercedes</field>
+            <field name="model">C-Class</field>
+            <field name="year">2023</field>
+            <field name="vehicle_type">sedan</field>
+            <field name="transmission">automatic</field>
+            <field name="fuel_type">petrol</field>
+            <field name="vin">MER-CCL-007</field>
+            <field name="selling_price">52000</field>
+            <field name="status">reserved</field>
+        </record>
+         <record id="veh_8" model="vehicle.vehicle">
+            <field name="make">Audi</field>
+            <field name="model">Q7</field>
+            <field name="year">2024</field>
+            <field name="vehicle_type">suv</field>
+            <field name="transmission">automatic</field>
+            <field name="fuel_type">hybrid</field>
+            <field name="vin">AUD-QQ7-008</field>
+            <field name="selling_price">72000</field>
+            <field name="status">reserved</field>
+        </record>
+         <record id="veh_9" model="vehicle.vehicle">
+            <field name="make">Porsche</field>
+            <field name="model">Macan</field>
+            <field name="year">2023</field>
+            <field name="vehicle_type">suv</field>
+            <field name="transmission">automatic</field>
+            <field name="fuel_type">petrol</field>
+            <field name="vin">POR-MAC-009</field>
+            <field name="selling_price">68000</field>
+            <field name="status">reserved</field>
+        </record>
+        
+        <!-- Sold -->
+        <record id="veh_10" model="vehicle.vehicle">
+            <field name="make">Nissan</field>
+            <field name="model">Leaf</field>
+            <field name="year">2022</field>
+            <field name="vehicle_type">electric</field>
+            <field name="transmission">automatic</field>
+            <field name="fuel_type">electric</field>
+            <field name="vin">NIS-LEA-010</field>
+            <field name="selling_price">22000</field>
+            <field name="status">sold</field>
+        </record>
+        <record id="veh_11" model="vehicle.vehicle">
+            <field name="make">Jeep</field>
+            <field name="model">Wrangler</field>
+            <field name="year">2023</field>
+            <field name="vehicle_type">suv</field>
+            <field name="transmission">manual</field>
+            <field name="fuel_type">petrol</field>
+            <field name="vin">JEE-WRA-011</field>
+            <field name="selling_price">41000</field>
+            <field name="status">sold</field>
+        </record>
+        
+        <!-- More Available -->
+        <record id="veh_12" model="vehicle.vehicle">
+            <field name="make">Subaru</field>
+            <field name="model">Outback</field>
+            <field name="year">2024</field>
+            <field name="vehicle_type">suv</field>
+            <field name="transmission">automatic</field>
+            <field name="fuel_type">petrol</field>
+            <field name="vin">SUB-OUT-012</field>
+            <field name="selling_price">34000</field>
+            <field name="status">available</field>
+        </record>
+        <record id="veh_13" model="vehicle.vehicle">
+            <field name="make">Mazda</field>
+            <field name="model">CX-5</field>
+            <field name="year">2023</field>
+            <field name="vehicle_type">suv</field>
+            <field name="transmission">automatic</field>
+            <field name="fuel_type">petrol</field>
+            <field name="vin">MAZ-CX5-013</field>
+            <field name="selling_price">31000</field>
+            <field name="status">available</field>
+        </record>
+         <record id="veh_14" model="vehicle.vehicle">
+            <field name="make">Kia</field>
+            <field name="model">Sorento</field>
+            <field name="year">2023</field>
+            <field name="vehicle_type">suv</field>
+            <field name="transmission">automatic</field>
+            <field name="fuel_type">hybrid</field>
+            <field name="vin">KIA-SOR-014</field>
+            <field name="selling_price">38000</field>
+            <field name="status">available</field>
+        </record>
+         <record id="veh_15" model="vehicle.vehicle">
+            <field name="make">Hyundai</field>
+            <field name="model">Ioniq 5</field>
+            <field name="year">2024</field>
+            <field name="vehicle_type">electric</field>
+            <field name="transmission">automatic</field>
+            <field name="fuel_type">electric</field>
+            <field name="vin">HYU-ION-015</field>
+            <field name="selling_price">46000</field>
+            <field name="status">available</field>
+        </record>
+
+        <!-- Reservations (10 Total) -->
+        <!-- Active Reservations (Linked to Reserved Vehicles) -->
+        <record id="res_1" model="vehicle.reservation">
+            <field name="partner_id" ref="partner_demo_john"/>
+            <field name="vehicle_id" ref="veh_5"/>
+            <field name="date_expiry" eval="(datetime.now() + timedelta(days=5)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="state">active</field>
+        </record>
+        <record id="res_2" model="vehicle.reservation">
+            <field name="partner_id" ref="partner_demo_jane"/>
+            <field name="vehicle_id" ref="veh_6"/>
+            <field name="date_expiry" eval="(datetime.now() + timedelta(days=2)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="state">active</field>
+        </record>
+         <record id="res_3" model="vehicle.reservation">
+            <field name="partner_id" ref="partner_demo_corp"/>
+            <field name="vehicle_id" ref="veh_7"/>
+            <field name="date_expiry" eval="(datetime.now() + timedelta(days=7)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="state">active</field>
+        </record>
+         <record id="res_4" model="vehicle.reservation">
+            <field name="partner_id" ref="partner_demo_john"/>
+            <field name="vehicle_id" ref="veh_8"/>
+            <field name="date_expiry" eval="(datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="state">active</field>
+        </record>
+         <record id="res_5" model="vehicle.reservation">
+            <field name="partner_id" ref="partner_demo_jane"/>
+            <field name="vehicle_id" ref="veh_9"/>
+            <field name="date_expiry" eval="(datetime.now() + timedelta(days=3)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="state">active</field>
+        </record>
+
+        <!-- Expired/Cancelled/Done Reservations (History) - Linked to currently available or sold vehicles is tricky if we want to keep history.
+             If status is available, we assume reservation is over.
+        -->
+        <record id="res_6" model="vehicle.reservation">
+            <field name="partner_id" ref="partner_demo_john"/>
+            <field name="vehicle_id" ref="veh_1"/>
+            <field name="date_expiry" eval="(datetime.now() - timedelta(days=5)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="state">expired</field>
+        </record>
+        <record id="res_7" model="vehicle.reservation">
+            <field name="partner_id" ref="partner_demo_jane"/>
+            <field name="vehicle_id" ref="veh_2"/>
+            <field name="date_expiry" eval="(datetime.now() - timedelta(days=10)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="state">cancelled</field>
+        </record>
+        <record id="res_8" model="vehicle.reservation">
+            <field name="partner_id" ref="partner_demo_john"/>
+            <field name="vehicle_id" ref="veh_3"/>
+            <field name="date_expiry" eval="(datetime.now() - timedelta(days=2)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="state">active</field>
+            <field name="state">expired</field>
+        </record>
+         <record id="res_9" model="vehicle.reservation">
+            <field name="partner_id" ref="partner_demo_corp"/>
+            <field name="vehicle_id" ref="veh_10" />
+            <field name="date_expiry" eval="(datetime.now() - timedelta(days=20)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="state">done</field>
+        </record>
+         <record id="res_10" model="vehicle.reservation">
+            <field name="partner_id" ref="partner_demo_jane"/>
+            <field name="vehicle_id" ref="veh_12"/>
+            <field name="date_expiry" eval="(datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="state">expired</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit_dealership" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.dealership</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="driving_license_number"/>
+                <field name="preferred_vehicle_type"/>
+            </xpath>
+            <notebook position="inside">
+                <page string="Vehicle Purchase History">
+                    <field name="purchased_vehicle_ids" readonly="1">
+                        <tree>
+                            <field name="make"/>
+                            <field name="model"/>
+                            <field name="year"/>
+                            <field name="vin"/>
+                            <field name="status"/>
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>
